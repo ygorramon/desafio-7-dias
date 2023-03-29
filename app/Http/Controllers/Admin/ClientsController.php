@@ -86,7 +86,12 @@ class ClientsController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$client = $this->repository->find($id)) {
+            return redirect()->back();
+        }
+
+
+        return view('admin.clients.edit', compact('client'));
     }
 
     /**
@@ -98,7 +103,35 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+       
+
+        if (!$client = $this->repository->find($id)) {
+            return redirect()->back();
+        }
+
+        $active=0;
+        $liberado = 0;
+
+if(isset($request->liberado)){
+            $liberado=1;
+}
+if(isset($request->active)){
+            $active=1;
+}
+
+
+$client->update([
+            'email' => $request->email,
+            'active' => $active,
+            'liberado' =>  $liberado,
+            'expireAt' => $request->expireAt,
+            'babyName' => $request->babyName,
+            'birthBaby' => $request->birthBaby,
+            'class' => $request->class,
+        ]);
+
+        return redirect()->route('clients.index');
     }
 
     /**
