@@ -68,13 +68,14 @@
                         <input type="text" readonly class="form-control" id="sexoBebe" value="{{$challenge->client->sexBaby == 'M' ? "MASCULINO" : "FEMININO"}}" placeholder="nomeMae">
                     </div>
                 </div>
-                <div class="col-md-4">
+               <!-- <div class="col-md-4">
                     <label for="sexoBebe">Terapeuta:</label>
 
                     <div>
                         <input type="text" readonly class="form-control" id="sexoBebe" value="{{$challenge->user->name}}" placeholder="nomeMae">
                     </div>
                 </div>
+            -->
             </div>
             
         </div>
